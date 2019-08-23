@@ -8,4 +8,5 @@
   $python3 SQLChecker.py
 # Requirements
   Python 3.x
+  
   Bs4 lib
