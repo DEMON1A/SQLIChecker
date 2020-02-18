@@ -1,8 +1,5 @@
-import re
-import requests
 import urllib.request
 import urllib.error
-from bs4 import BeautifulSoup
 
 print("""
                                      _______________________________________________
@@ -22,50 +19,25 @@ print("""
 Target = input("[*]Enter Target Url: ")
 PayLoad = "'"
 
-res = requests.get(Target + PayLoad)
 
 print(" ")
-print("[*]Start Check The Url!")
+print("[*]Started Checking The Url!")
 print(" ")
 
-Soup = BeautifulSoup(res.content,'html.parser')
-
-
-if len(Soup.find_all(text = re.compile('SQL syntax'))) > 0:
-    try:
-        print(" ")
-        print("++++++++++++")
+try:
+    res = urllib.request.urlopen(Target + PayLoad).read().decode('utf8')
+    print(" ")
+    print("++++++++++++")
+    if 'sql syntax' in res.lower():
         print("[+]Infected")
-        print("[*]Done")
-        print("++++++++++++")
-    except urllib.error.URLError :
-        print("[!]The Url Is Wrong")
-    except urllib.error.HTTPError :
-        print("[!]The Page Is Not Responding")
-
-if len(Soup.find_all(text = re.compile('SQL syntax'))) == 0:
-    try:
-        print(" ")
-        print("++++++++++++++++")
+    else:
         print("[!]Not Infected")
-        print("[*]Done")
-        print("++++++++++++++++")
-    except urllib.error.URLError :
-        print("[!]The Url Is Wrong")
-    except urllib.error.HTTPError :
-        print("[!]The Page Is Not Responding")
-
-if len(Soup.find_all(text = re.compile('SQL syntax'))) < 0:
-    try:
-        print(" ")
-        print("++++++++++++++++")
-        print("[!]Not Infected")
-        print("[*]Done")
-        print("++++++++++++++++")
-    except urllib.error.URLError :
-        print("[!]The Url Is Wrong")
-    except urllib.error.HTTPError :
-        print("[!]The Page Is Not Responding")
+    print("[*]Done")
+    print("++++++++++++")
+except urllib.error.URLError :
+    print("[!]The Url Is Wrong")
+except urllib.error.HTTPError :
+    print("[!]The Page Is Not Responding")
 
 print("[+]For More Tools Visit My Github Account")
 
