@@ -1,72 +1,51 @@
+'''
+LOL Really I Hate Myself It Was A Shit Code
+I Will Clean It And Add List Check Later LOL
+Have Fun Bruh!
+'''
 import re
 import requests
 import urllib.request
 import urllib.error
 from bs4 import BeautifulSoup
 
-print("""
-                                     _______________________________________________
-                                    |          =============================        |
-                                    |         +  SQLChecker By Mohamed Dief  +      |
-                                    |          =============================        |
-                                    |                                               |
-                                    |[+]Github: github.com/DEMON1A                  |
-                                    |[+]Facebook: facebook.com/mohamed.dief.1029    |
-                                    |[+]Twitter: twitter.com/Demon77098812          |
-                                    |[+]Email: mdaif1332@gmail.com                  |
-                                    =================================================
+def Banner():
+  ban = "\t\t\t\t\t\t\t<< SQLI Checker >>\n"
+  print(ban)
 
-""")
+def Start():
+    # Ask For Target Site
+    Target = input("Enter Url: ")
+    Payload = "'" # Just A Singel Code To Check IF There is A SQL ERROR
 
+    Session = requests.Session()
+    Request = Session.get(Target + Payload)
+    Soup = BeautifulSoup(Request.content,'html.parser')
 
-Target = input("[*]Enter Target Url: ")
-PayLoad = "'"
+    # Npw USE RE To Check The Content
+    if len(Soup.find_all(text = re.compile('SQL syntax'))) > 0:
+        try:
+            print("{0} >> Infected".format(Target)
+        except urllib.error.URLError :
+            print("Sorry Wrong URL!")
+        except urllib.error.HTTPError :
+            print("Page Not Responding!!!")
 
-res = requests.get(Target + PayLoad)
+    if len(Soup.find_all(text = re.compile('SQL syntax'))) == 0:
+        try:
+            print("{0} >> Not Infected".format(Target)
+        except urllib.error.URLError :
+            print("Sorry Wrong URL!")
+        except urllib.error.HTTPError :
+            print("Page Not Responding!!!")
 
-print(" ")
-print("[*]Start Check The Url!")
-print(" ")
-
-Soup = BeautifulSoup(res.content,'html.parser')
-
-
-if len(Soup.find_all(text = re.compile('SQL syntax'))) > 0:
-    try:
-        print(" ")
-        print("++++++++++++")
-        print("[+]Infected")
-        print("[*]Done")
-        print("++++++++++++")
-    except urllib.error.URLError :
-        print("[!]The Url Is Wrong")
-    except urllib.error.HTTPError :
-        print("[!]The Page Is Not Responding")
-
-if len(Soup.find_all(text = re.compile('SQL syntax'))) == 0:
-    try:
-        print(" ")
-        print("++++++++++++++++")
-        print("[!]Not Infected")
-        print("[*]Done")
-        print("++++++++++++++++")
-    except urllib.error.URLError :
-        print("[!]The Url Is Wrong")
-    except urllib.error.HTTPError :
-        print("[!]The Page Is Not Responding")
-
-if len(Soup.find_all(text = re.compile('SQL syntax'))) < 0:
-    try:
-        print(" ")
-        print("++++++++++++++++")
-        print("[!]Not Infected")
-        print("[*]Done")
-        print("++++++++++++++++")
-    except urllib.error.URLError :
-        print("[!]The Url Is Wrong")
-    except urllib.error.HTTPError :
-        print("[!]The Page Is Not Responding")
-
-print("[+]For More Tools Visit My Github Account")
-
-
+    if len(Soup.find_all(text = re.compile('SQL syntax'))) < 0:
+        try:
+            print("{0} >> Not Infected".format(Target)
+        except urllib.error.URLError :
+            print("Sorry Wrong URL!")
+        except urllib.error.HTTPError :
+            print("Page Not Responding!!!")
+                  
+Banner()
+Start()
