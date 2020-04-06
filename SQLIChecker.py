@@ -33,7 +33,7 @@ def Start():
 
     if len(Soup.find_all(text = re.compile('SQL syntax'))) == 0:
         try:
-            print("{0} >> Not Infected".format(Target)
+            print("{0} >> Not Infected".format(Target))
         except urllib.error.URLError :
             print("Sorry Wrong URL!")
         except urllib.error.HTTPError :
@@ -41,7 +41,7 @@ def Start():
 
     if len(Soup.find_all(text = re.compile('SQL syntax'))) < 0:
         try:
-            print("{0} >> Not Infected".format(Target)
+            print("{0} >> Not Infected".format(Target))
         except urllib.error.URLError :
             print("Sorry Wrong URL!")
         except urllib.error.HTTPError :
