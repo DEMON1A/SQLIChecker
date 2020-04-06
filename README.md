@@ -7,6 +7,6 @@ cd SQLChecker
 python3 SQLChecker.py
 ```
 # Usage
-- Just Enter The Website List On First Input
+- Just Enter The Website URL On First Input
 # Requirements
 - Python 3.x
