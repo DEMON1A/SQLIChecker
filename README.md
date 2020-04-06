@@ -10,3 +10,5 @@ python3 SQLChecker.py
 - Just Enter The Website URL On First Input
 # Requirements
 - Python 3.x
+# View
+![](View/SQLI.png)
