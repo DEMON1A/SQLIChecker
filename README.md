@@ -3,7 +3,7 @@
 # Download And Run This Tool
 ```
 git clone https://github.com/DEMON1A/SQLChecker
-cd SQLIChecker
+cd SQLChecker
 python3 SQLIChecker.py
 ```
 # Usage
