@@ -9,6 +9,6 @@ python3 SQLIChecker.py
 # Usage
 - Just Enter The Website URL On First Input
 # Requirements
-- Python 3.x
+> Python 3.x
 # View
 ![](View/SQLI.png)
